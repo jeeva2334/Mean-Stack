@@ -1,0 +1,17 @@
+<div class="h-full">
+    <app-navbar></app-navbar>
+    <div class="container mt-20 p-7 flex flex-col justify-start items-center">
+        <h1 class="text-3xl font-bold">{{book.title}}</h1>
+        <img src={{book.image}} alt={{book.title}} class="mt-5">
+        <p class="mt-5">{{book.description}}</p>
+        <div class="w-full flex flex-col justify-center items-end">
+            <p>Peaked your intrest ?</p>
+            <ng-container *ngIf="!isLoading">
+                <button class="mt-2 bg-gray-600 text-white py-2 px-4 rounded-lg hover:bg-gray-500" (click)="returnBook()">Return-Book</button>
+            </ng-container>
+            <ng-container *ngIf="isLoading">
+                <button class="mt-2 bg-gray-600 text-white py-2 px-4 rounded-lg hover:bg-gray-500">Loading ...</button>
+            </ng-container>
+        </div>
+    </div>
+</div>

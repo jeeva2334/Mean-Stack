@@ -1,0 +1,16 @@
+<div class="h-full">
+    <app-navbar></app-navbar>
+    <div class="mt-20 w-full flex flex-col justify-start items-center container">
+        <h1 class="text-4xl font-bold mb-7">Book-kart</h1>
+        <div class="grid grid-cols-1 gap-5 md:grid-cols-3">
+            <ng-container *ngFor="let book of single;let i = index" >
+                <a [routerLink]="['/return',book._id]"><app-card image={{book.image}} title={{book.title}} [genre]="[book.genre]" author={{book.author}} [return]="true"></app-card></a>
+            </ng-container>
+        </div>
+        <ng-container *ngIf="single.length == 0">
+            <div class="container flex flex-col justify-center items-center">
+                <img src="../../../assets/Lovepik_com-401173105-open-book.png" class="w-80" alt="no books">
+                <p class="text-2xl font-bold">No books to return</p>
+            </div>
+        </ng-container>
+</div>

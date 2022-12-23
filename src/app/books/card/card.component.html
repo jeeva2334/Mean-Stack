@@ -1,0 +1,14 @@
+<div class="p-4 w-80 h-96 flex flex-col justify-start items-center bg-white bg-opacity-20 rounded-xl">
+    <img src={{image}} alt="book-kart" class="w-[160px]">
+    <h1 class="text-xl font-bold">{{title}}</h1>
+    <p class="ml-16 mb-2 font-semibold">-{{author}}</p>
+    <div class="flex">
+        <span *ngFor="let genr of splited" class="bg-gray-200 text-gray-800 text-xs font-semibold w-16 flex justify-center items-center px-2.5 py-0.5 rounded dark:bg-gray-200 dark:text-gray-800 mr-3">#{{genr}}</span>
+    </div>
+    <ng-container *ngIf="return">
+        <button class="w-full bg-gray-600 color-white mt-4 h-9 rounded-lg cursor-pointer hover:bg-gray-500">Return Book</button>
+    </ng-container>
+    <ng-container *ngIf="!return">
+        <button class="w-full bg-gray-600 color-white mt-4 h-9 rounded-lg cursor-pointer hover:bg-gray-500">Take Book</button>
+    </ng-container>
+</div>

@@ -1,0 +1,23 @@
+<div class="h-full flex flex-col justify-center items-center">
+    <nav class="w-full bg-black h-16 fixed top-0 flex justify-start items-center px-6">
+        <h1 class="text-2xl font-bold">Bookkart</h1>
+    </nav>
+    <div class="container text-white w-96 h-96 bg-white bg-opacity-20 backdrop-blur-sm backdrop-brightness-50 shadow-lg rounded-md border-gray-300" style="backdrop-filter: blur(20px);">
+        <div class="flex flex-col justify-center w-full items-center">
+            <h1 class="text-2xl font-bold mt-8">OTP Verification</h1>
+            <p class="text-sm mt-5 mb-16">Enter the OTP sent to your email</p>
+            <form class="text-black h-full flex flex-col justify-center items-center" (ngSubmit)="onSubmit()">
+                <ngx-otp-input [config]="OtpConfig" (otpChange)="onOtpChange($event)"></ngx-otp-input>
+                <ng-container *ngIf="!isLoaded">
+                    <button class="w-72 h-10 rounded-md text-white mt-5 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">Verify</button>
+                </ng-container>
+                <ng-container *ngIf="isLoaded">
+                    <button disabled class="w-72 h-10 rounded-md text-white mt-5 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">loading ...</button>
+                </ng-container>
+            </form>
+            <p>Havent got your otp yet ? <span class="text-blue-500 cursor-pointer" (click)="resend()">Resend otp</span></p>
+        </div>
+    </div>
+    <div *ngIf="alert" class="text-red-400 bg-red-700 p-4 flex justify-center items-center mt-6 rounded-lg">Invalid Otp &nbsp;<span (click)="alert=!alert"><fa-icon [icon]="faClose" class="cursor-pointer"></fa-icon></span></div>
+    <div *ngIf="sucAlt" class="text-green-400 bg-green-700 p-4 flex justify-center items-center mt-6 rounded-lg">{{sucmsg}} &nbsp;<span (click)="sucAlt=!sucAlt"><fa-icon [icon]="faClose" class="cursor-pointer"></fa-icon></span></div>
+</div>

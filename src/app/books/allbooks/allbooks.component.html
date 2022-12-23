@@ -1,0 +1,10 @@
+<div class="h-full">
+    <app-navbar></app-navbar>
+    <div class="mt-20 w-full flex flex-col justify-start items-center container">
+        <h1 class="text-4xl font-bold mb-10">Book-kart</h1>
+        <div class="grid grid-cols-1 gap-5 md:grid-cols-3">
+            <ng-container *ngFor="let book of books;let i = index" >
+                <a [routerLink]="['/description',book._id]"><app-card image={{book.image}} title={{book.title}} [genre]="[book.genre]" author={{book.author}}></app-card></a>
+            </ng-container>
+        </div>
+</div>
