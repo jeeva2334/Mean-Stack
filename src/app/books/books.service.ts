@@ -25,22 +25,22 @@ export class BooksService {
   }
 
   getUser(){
-    return this.http.get<{user:any}>('http://localhost:8000/api/user/profile/'+localStorage.getItem('user'));
+    return this.http.get<{user:any}>('https://book-kart-api.onrender.com/api/user/profile/'+localStorage.getItem('user'));
   }
 
   async logout(){
     localStorage.removeItem('user');
     localStorage.removeItem('token');
-    return this.http.get<{message:string}>('http://localhost:8000/api/user/logout');
+    return this.http.get<{message:string}>('https://book-kart-api.onrender.com/api/user/logout');
   }
 
   getBooks(){
-    return this.http.get<{books:any}>('http://localhost:8000/api/books/getBooks');
+    return this.http.get<{books:any}>('https://book-kart-api.onrender.com/api/books/getBooks');
   }
 
   getBook(id:string){
     console.log(id);
-    return this.http.get<{Book:any}>('http://localhost:8000/api/books/getBook/'+id);
+    return this.http.get<{Book:any}>('https://book-kart-api.onrender.com/api/books/getBook/'+id);
   }
 
   takeBook(id:string){
@@ -50,7 +50,7 @@ export class BooksService {
       userId:uid
     }
     console.log(body);
-    return this.http.post<{message:string}>('http://localhost:8000/api/myBooks/TakeBook/',body);
+    return this.http.post<{message:string}>('https://book-kart-api.onrender.com/api/myBooks/TakeBook/',body);
   }
 
   myBooks(){
@@ -58,13 +58,13 @@ export class BooksService {
     const body = {
       userId:uid
     }
-    return this.http.post<{books:any}>('http://localhost:8000/api/myBooks/',body);
+    return this.http.post<{books:any}>('https://book-kart-api.onrender.com/api/myBooks/',body);
   }
 
   returnBook(id:string){
     const body = {
       id:id
     }
-    return this.http.post<{message:string}>('http://localhost:8000/api/myBooks/returnBook/',body);
+    return this.http.post<{message:string}>('https://book-kart-api.onrender.com/api/myBooks/returnBook/',body);
   }
 }

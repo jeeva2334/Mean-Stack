@@ -11,11 +11,11 @@ export class AuthService {
   constructor(private http:HttpClient) { }
 
   Login(email:string,password:string){
-    return this.http.post<{message:string;status:number;token:string;user:string}>('http://localhost:8000/api/user/login',{email,password})
+    return this.http.post<{message:string;status:number;token:string;user:string}>('https://book-kart-api.onrender.com/api/user/login',{email,password})
   }
 
   signup(fullname:string,phone:string,email:string,password:string){
-    return this.http.post<{message:string;status:number;user:string}>("http://localhost:8000/api/user/addUser/",{fullname,phone,email,password})
+    return this.http.post<{message:string;status:number;user:string}>("https://book-kart-api.onrender.com/api/user/addUser/",{fullname,phone,email,password})
   }
 
   otp(uid:string,otp:string){
@@ -23,11 +23,11 @@ export class AuthService {
       uid: uid,
       otp: otp
     }
-    return this.http.post<{message:string;status:number}>("http://localhost:8000/api/user/addUser/Otp/",{uid,otp})
+    return this.http.post<{message:string;status:number}>("https://book-kart-api.onrender.com/api/user/addUser/Otp/",{uid,otp})
   }
 
   resendOtp(email:string){
-    return this.http.post<{message:string;status:number}>("http://localhost:8000/api/user/addUser/Otp/Resend",{email})
+    return this.http.post<{message:string;status:number}>("https://book-kart-api.onrender.com/api/user/addUser/Otp/Resend",{email})
   }
 
   checkLogin(){
@@ -41,6 +41,6 @@ export class AuthService {
   }
 
   getUser(){
-    return this.http.get<{user:any}>('http://localhost:8000/api/user/profile/'+localStorage.getItem('user'))
+    return this.http.get<{user:any}>('https://book-kart-api.onrender.com/api/user/profile/'+localStorage.getItem('user'))
   }
 }
